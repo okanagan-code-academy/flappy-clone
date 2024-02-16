@@ -590,8 +590,3 @@ function createObstacle(xPosition: number, yPosition: number, yOffset: number, x
     bottomPipeSprite.y = topPipeSprite.y + yOffset
     bottomPipeSprite.vx = -xVelocity
 }
-
-game.onUpdateInterval(1000, function() {
-    createObstacle(160, randint(-40, 40), 140, 50)
-    
-})
