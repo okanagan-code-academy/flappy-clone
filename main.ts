@@ -144,6 +144,12 @@ playerSprite.ay = 200
 controller.A.onEvent(ControllerButtonEvent.Pressed, function() {
     playerSprite.vy = -100
 })
+
+// A good place holder for how our sprites should be generated.
+// The key take away here is that the two obstacle sprites need to maintain a difference in the y-distance of roughly 140 pixels (as the sprites themselves are 100 pixels tall).
+// The x-position can stay the same.
+
+
 let topPipeSprite = sprites.create(img`
     11111111111111111111
     11111111111111111111
@@ -349,7 +355,17 @@ let bottomPipeSprite = sprites.create(img`
     11111111111111111111
 `, SpriteKind.Enemy)
 topPipeSprite.x = 80
-topPipeSprite.y = -10. 
+topPipeSprite.y = -10
 bottomPipeSprite.x = 80
 bottomPipeSprite.y = 130
+
+
+
+
+/* TODO: 
+- Define a function that generates two obstacle sprites with parameters 
+    - "xPosition" to set the x-position of the top sprite
+    - "yPosition" to set the y-postion of the top sprite
+    - "yOffset" to determine the vertical distance between the top and bottom sprites
+*/
 
