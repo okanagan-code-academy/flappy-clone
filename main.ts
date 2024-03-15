@@ -1,3 +1,14 @@
+namespace SpriteKind {
+    export const ShrinkPower = SpriteKind.create()
+}
+let shrinkPowerActive = false
+
+function shrinkPower() {
+    shrinkPowerActive = true
+    playerSprite.setScale(0.5)
+    info.startCountdown(10)
+}
+
 let playerSprite = sprites.create(img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
@@ -331,6 +342,9 @@ bottomPipeSprite.y = 130
 
 */
 
+
+
+
 function createObstacle(xPosition: number, yPosition: number, yOffset: number, xVelocity: number) {
     let topPipeSprite = sprites.create(img`
         .................333333333aaaa....................
@@ -619,6 +633,31 @@ function createObstacle(xPosition: number, yPosition: number, yOffset: number, x
     scoreSprite.y = 60
     scoreSprite.z = -1
     scoreSprite.vx = -xVelocity
+
+    if(Math.percentChance(100)){
+        let powerUpSprite = sprites.create(img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . d d 2 2 d d . . . . .
+    . . . . . d d 2 2 d d . . . . .
+    . . . . . 2 d 2 2 d 2 . . . . .
+    . . . . . d 2 2 2 2 d . . . . .
+    . . . . . d d 2 2 d d . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`, SpriteKind.ShrinkPower)
+        powerUpSprite.x = xPosition
+        powerUpSprite.y = bottomPipeSprite.y - yOffset/2
+        powerUpSprite.vx = -xVelocity
+    }
+
     /*
     step 1) create a new sprite with kind score
     step 2) position the sprite in the center of the top and bottom pipe sprites
